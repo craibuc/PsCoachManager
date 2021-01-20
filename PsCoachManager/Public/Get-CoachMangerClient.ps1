@@ -12,7 +12,7 @@ Retrieve Clients that have been created or modified after this date
 Retrieve Clients that have been created or modified prior to this date
 
 #>
-function Get-CmClient {
+function Get-CoachManagerClient {
 
     [CmdletBinding()]
     param (

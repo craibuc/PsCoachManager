@@ -3,7 +3,7 @@
 Remove trailing space from PHCS..Clients.ClientId
 
 #>
-function Repair-CmClientId {
+function Repair-CoachManagerClientId {
 
     [CmdletBinding(SupportsShouldProcess)]
     param (

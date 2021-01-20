@@ -6,7 +6,7 @@ Updates a PHCS..Clients
 Retrieve the specific Client using Coach Manager's ClientID
 
 #>
-function Set-CmClient {
+function Set-CoachManagerClient {
 
     [CmdletBinding(SupportsShouldProcess)]
     param (
