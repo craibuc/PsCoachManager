@@ -29,7 +29,7 @@ function Get-CoachManagerClient {
         [pscredential]$Credential,
 
         [Parameter(ParameterSetName='ByClientId', Mandatory)]
-        [string]$ClientId,
+        [string[]]$ClientId,
 
         [Parameter(ParameterSetName='ByDate')]
         [datetime]$FromDate,
@@ -57,7 +57,7 @@ function Get-CoachManagerClient {
         ORDER_BY = "ORDER BY ClientID"
     }
 
-    if ( $ClientId ) { $Predicate.WHERE += "`r`nAND ClientId = '$ClientId'" }
+    if ( $ClientId ) { $Predicate.WHERE += "`r`nAND ClientId IN ('$( $ClientId -join "','" )')" }
     if ( $FromDate ) { $Predicate.WHERE += "`r`nAND LastUpdated >= '$FromDate'" }
     if ( $ToDate ) { $Predicate.WHERE += "`r`nAND LastUpdated <= '$ToDate'" }
 
