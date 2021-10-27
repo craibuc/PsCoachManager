@@ -27,7 +27,7 @@ function New-CoachManagerDriver {
         [string]$Surname,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [datetime]$DateOfBirth,
+        [System.Nullable[datetime]]$DateOfBirth,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [ValidateSet('Female','Male')]
@@ -79,10 +79,10 @@ function New-CoachManagerDriver {
         [string]$LicenseNumber,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [datetime]$LicenseValidFrom,
+        [System.Nullable[datetime]]$LicenseValidFrom,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [datetime]$LicenseValidTo,
+        [System.Nullable[datetime]]$LicenseValidTo,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [string]$CompanyID,
@@ -91,7 +91,7 @@ function New-CoachManagerDriver {
         [datetime]$EmploymentStarted,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [datetime]$EmploymentFinished,
+        [System.Nullable[datetime]]$EmploymentFinished,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [int]$PayrollID,
