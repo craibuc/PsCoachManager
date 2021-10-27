@@ -17,17 +17,43 @@ Describe "New-CoachManagerDriver" {
             $Command = Get-Command 'New-CoachManagerDriver'
         }
 
-        $Parameters = @(
-            @{ParameterName='ServerInstance'; Type='[string]'; Mandatory=$true}
-            @{ParameterName='Database'; Type='[string]'; Mandatory=$false}
-            @{ParameterName='Credential'; Type='[pscredential]'; Mandatory=$true}
+        BeforeDiscovery {
+            $Parameters = @(
+                @{ParameterName='ServerInstance'; Type='[string]'; Mandatory=$true}
+                @{ParameterName='Database'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='Credential'; Type='[pscredential]'; Mandatory=$true}
+    
+                @{ParameterName='DriverID'; Type='[string]'; Mandatory=$true}
+                @{ParameterName='DriverType'; Type='[string]'; Mandatory=$true}
+                @{ParameterName='FirstName'; Type='[string]'; Mandatory=$true}
+                @{ParameterName='Surname'; Type='[string]'; Mandatory=$true}
+                @{ParameterName='EmploymentStarted'; Type='[datetime]'; Mandatory=$true}
 
-            @{ParameterName='DriverID'; Type='[string]'; Mandatory=$true}
-            @{ParameterName='DriverType'; Type='[string]'; Mandatory=$true}
-            @{ParameterName='FirstName'; Type='[string]'; Mandatory=$true}
-            @{ParameterName='Surname'; Type='[string]'; Mandatory=$true}
-            @{ParameterName='EmploymentStarted'; Type='[datetime]'; Mandatory=$true}
-        )
+                @{ParameterName='Title'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='DateOfBirth'; Type=[System.Nullable[datetime]]; Mandatory=$false}
+                @{ParameterName='Gender'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='Address1'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='Address2'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='City'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='RegionCode'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='PostalCode'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo1'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo1Comment'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo2'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo2Comment'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo3'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo3Comment'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='FaxNo'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='FaxNoComment'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='EMail'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='LicenseValidFrom'; Type=[System.Nullable[datetime]]; Mandatory=$false}
+                @{ParameterName='LicenseValidTo'; Type=[System.Nullable[datetime]]; Mandatory=$false}
+                @{ParameterName='CompanyID'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='EmploymentFinished'; Type=[System.Nullable[datetime]]; Mandatory=$false}
+                @{ParameterName='PayrollID'; Type='[int]'; Mandatory=$false}
+                @{ParameterName='Schedule'; Type='[bool]'; Mandatory=$false}
+            )    
+        }
 
         Context 'Data type' {
         
@@ -86,9 +112,9 @@ Describe "New-CoachManagerDriver" {
                     $Credential -eq $Authentication.Credential
                 }
             }
-            It "uses the expected Query" {
+            It "updates the expected table" {
                 Assert-MockCalled Invoke-Sqlcmd -ParameterFilter {
-                    # $Query -eq $Expected.Query
+                    $Query -like "INSERT INTO *Drivers*"
                 }
             }
 
