@@ -12,7 +12,7 @@
 RootModule = 'PsCoachManager.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.1'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -71,7 +71,7 @@ Description = 'PowerShell module to interact with Coach Manager''s SQL database.
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @(
     'Get-CoachManagerClient','Set-CoachManagerClient'
-    'Get-CoachManagerDriver','New-CoachManagerDriver'
+    'Get-CoachManagerDriver','New-CoachManagerDriver','Set-CoachManagerDriver'
     'Get-CoachManagerPayroll'
     'Repair-CoachManagerClientId'
 )
@@ -115,7 +115,7 @@ PrivateData = @{
         # ReleaseNotes = ''
 
         # Prerelease string of this module
-        Prerelease = 'beta'
+        # Prerelease = 'beta'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
