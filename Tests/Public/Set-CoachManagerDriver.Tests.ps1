@@ -14,7 +14,6 @@ Describe "Set-CoachManagerDriver" {
     Context "Parameter validation" {
 
         BeforeAll {
-            write-verbose 'Describe\Context[parm validation]\BeforeAll'
             $Command = Get-Command 'Set-CoachManagerDriver'
         }
 
@@ -93,7 +92,6 @@ Describe "Set-CoachManagerDriver" {
         }
 
         BeforeDiscovery {
-            write-verbose 'Describe\Context[Usage]\BeforeDiscovery'
             $Mandatory = @{
                 DriverSerialNo=1
                 DriverID='DriverID'
