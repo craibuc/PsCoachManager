@@ -38,8 +38,14 @@ Describe "Set-CoachManagerDriver" {
                 @{ParameterName='City'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='RegionCode'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='PostalCode'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='CellularPhone'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='HomePhone'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo1'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo1Comment'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo2'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo2Comment'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo3'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='TelNo3Comment'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='FaxNo'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='FaxNoComment'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='EMail'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='LicenseValidFrom'; Type=[System.Nullable[datetime]]; Mandatory=$false}
                 @{ParameterName='LicenseValidTo'; Type=[System.Nullable[datetime]]; Mandatory=$false}
@@ -158,8 +164,14 @@ Describe "Set-CoachManagerDriver" {
                     City='City'
                     RegionCode='RegionCode'
                     PostalCode='PostalCode'
-                    CellularPhone='CellularPhone'
-                    HomePhone='HomePhone'
+                    TelNo1='TelNo1'
+                    TelNo1Comment='TelNo1Comment'
+                    TelNo2='TelNo2'
+                    TelNo2Comment='TelNo2Comment'
+                    TelNo3='TelNo3'
+                    TelNo3Comment='TelNo3Comment'
+                    FaxNo='FaxNo'
+                    FaxNoComment='FaxNoComment'
                     EMail='EMail'
                     LicenseValidFrom='10/03/21'
                     LicenseValidTo='10/04/21'
@@ -180,8 +192,14 @@ Describe "Set-CoachManagerDriver" {
                     City='City'
                     RegionCode='RegionCode'
                     PostalCode='PostalCode'
-                    CellularPhone='CellularPhone'
-                    HomePhone='HomePhone'
+                    TelNo1='TelNo1'
+                    TelNo1Comment='TelNo1Comment'
+                    TelNo2='TelNo2'
+                    TelNo2Comment='TelNo2Comment'
+                    TelNo3='TelNo3'
+                    TelNo3Comment='TelNo3Comment'
+                    FaxNo='FaxNo'
+                    FaxNoComment='FaxNoComment'
                     EMail='EMail'
                     LicenseValidFrom='10/03/21'
                     LicenseValidTo='10/04/21'

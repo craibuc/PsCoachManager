@@ -38,9 +38,17 @@ The primary key for the PHCS..Drivers table.
 
 .PARAMETER PostalCode
 
-.PARAMETER CellularPhone
+.PARAMETER TelNo1
+.PARAMETER TelNo1Comment
 
-.PARAMETER HomePhone
+.PARAMETER TelNo2
+.PARAMETER TelNo2Comment
+
+.PARAMETER TelNo3
+.PARAMETER TelNo3Comment
+
+.PARAMETER FaxNo
+.PARAMETER FaxNoComment
 
 .PARAMETER EMail
 
@@ -149,10 +157,28 @@ function Set-CoachManagerDriver {
         [string]$PostalCode,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$CellularPhone,
+        [string]$TelNo1,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$HomePhone,
+        [string]$TelNo1Comment,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [string]$TelNo2,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [string]$TelNo2Comment,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [string]$TelNo3,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [string]$TelNo3Comment,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [string]$FaxNo,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [string]$FaxNoComment,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [string]$EMail,
