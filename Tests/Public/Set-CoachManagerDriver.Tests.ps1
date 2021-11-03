@@ -46,8 +46,8 @@ Describe "Set-CoachManagerDriver" {
                 @{ParameterName='FaxNo'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='FaxNoComment'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='EMail'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='LicenseValidFrom'; Type=[System.Nullable[datetime]]; Mandatory=$false}
-                @{ParameterName='LicenseValidTo'; Type=[System.Nullable[datetime]]; Mandatory=$false}
+                @{ParameterName='LicenceValidFrom'; Type=[System.Nullable[datetime]]; Mandatory=$false}
+                @{ParameterName='LicenceValidTo'; Type=[System.Nullable[datetime]]; Mandatory=$false}
                 @{ParameterName='CompanyID'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='EmploymentFinished'; Type=[System.Nullable[datetime]]; Mandatory=$false}
                 @{ParameterName='PayrollID'; Type='[int]'; Mandatory=$false}
@@ -171,8 +171,8 @@ Describe "Set-CoachManagerDriver" {
                     FaxNo='FaxNo'
                     FaxNoComment='FaxNoComment'
                     EMail='EMail'
-                    LicenseValidFrom='10/03/21'
-                    LicenseValidTo='10/04/21'
+                    LicenceValidFrom='10/03/21'
+                    LicenceValidTo='10/04/21'
                     CompanyID='CompanyID'
                     EmploymentFinished='10/05/21'
                     PayrollID=1
@@ -199,8 +199,8 @@ Describe "Set-CoachManagerDriver" {
                     FaxNo='FaxNo'
                     FaxNoComment='FaxNoComment'
                     EMail='EMail'
-                    LicenseValidFrom='10/03/21'
-                    LicenseValidTo='10/04/21'
+                    LicenceValidFrom='10/03/21'
+                    LicenceValidTo='10/04/21'
                     CompanyID='CompanyID'
                     EmploymentFinished='10/05/21'
                     PayrollID=1
@@ -221,7 +221,7 @@ Describe "Set-CoachManagerDriver" {
                         if ( $Name -in 'PayrollID','Schedule') {
                             "*{0}={1}*" -f $Name, $Value
                         }
-                        elseif ( $Name -in 'LicenseValidFrom','LicenseValidTo','EmploymentFinished') {
+                        elseif ( $Name -in 'LicenceValidFrom','LicenceValidTo','EmploymentFinished') {
                             "*{0}='{1}'*" -f $Name, ([datetime]$Value).ToString('MM/dd/yyyy')
                         }
                         else {

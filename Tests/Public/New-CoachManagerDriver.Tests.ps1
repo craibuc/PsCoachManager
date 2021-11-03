@@ -46,8 +46,8 @@ Describe "New-CoachManagerDriver" {
                 @{ParameterName='FaxNo'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='FaxNoComment'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='EMail'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='LicenseValidFrom'; Type=[System.Nullable[datetime]]; Mandatory=$false}
-                @{ParameterName='LicenseValidTo'; Type=[System.Nullable[datetime]]; Mandatory=$false}
+                @{ParameterName='LicenceValidFrom'; Type=[System.Nullable[datetime]]; Mandatory=$false}
+                @{ParameterName='LicenceValidTo'; Type=[System.Nullable[datetime]]; Mandatory=$false}
                 @{ParameterName='CompanyID'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='EmploymentFinished'; Type=[System.Nullable[datetime]]; Mandatory=$false}
                 @{ParameterName='PayrollID'; Type='[int]'; Mandatory=$false}

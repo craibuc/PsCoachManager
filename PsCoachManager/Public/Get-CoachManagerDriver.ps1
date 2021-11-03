@@ -108,7 +108,7 @@ function Get-CoachManagerDriver {
                 DriverType = $_.DriverType
                 DateCreated = $_.DateCreated
                 # license
-                LicenseNumber = $_.LicenseNumber | nz
+                LicenceNumber = $_.LicenceNumber | nz
                 LicenceValidFrom = $_.LicenceValidFrom | nz
                 LicenceValidTo = $_.LicenceValidTo | nz
                 # employment

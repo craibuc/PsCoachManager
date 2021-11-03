@@ -76,13 +76,16 @@ function New-CoachManagerDriver {
         [string]$EMail,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$LicenseNumber,
+        [Alias('LicenseNumber')]
+        [string]$LicenceNumber,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [System.Nullable[datetime]]$LicenseValidFrom,
+        [Alias('LicenseValidFrom')]
+        [System.Nullable[datetime]]$LicenceValidFrom,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [System.Nullable[datetime]]$LicenseValidTo,
+        [Alias('LicenseValidTo')]
+        [System.Nullable[datetime]]$LicenceValidTo,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [string]$CompanyID,

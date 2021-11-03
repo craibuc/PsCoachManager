@@ -52,11 +52,11 @@ The primary key for the PHCS..Drivers table.
 
 .PARAMETER EMail
 
-.PARAMETER LicenseNumber
+.PARAMETER LicenceNumber
 
-.PARAMETER LicenseValidFrom
+.PARAMETER LicenceValidFrom
 
-.PARAMETER LicenseValidTo
+.PARAMETER LicenceValidTo
 
 .PARAMETER CompanyID
 
@@ -184,13 +184,16 @@ function Set-CoachManagerDriver {
         [string]$EMail,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$LicenseNumber,
+        [Alias('LicenseNumber')]
+        [string]$LicenceNumber,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [System.Nullable[datetime]]$LicenseValidFrom,
+        [Alias('LicenseValidFrom')]
+        [System.Nullable[datetime]]$LicenceValidFrom,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [System.Nullable[datetime]]$LicenseValidTo,
+        [Alias('LicenseValidTo')]
+        [System.Nullable[datetime]]$LicenceValidTo,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [string]$CompanyID,
