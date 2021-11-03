@@ -12,7 +12,7 @@
 RootModule = 'PsCoachManager.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.3.0'
+ModuleVersion = '0.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -73,6 +73,7 @@ FunctionsToExport = @(
     'Get-CoachManagerClient','Set-CoachManagerClient'
     'Get-CoachManagerDriver','New-CoachManagerDriver','Set-CoachManagerDriver'
     'Get-CoachManagerPayroll'
+    'Get-CoachManagerPrivateHireMovement'
     'Repair-CoachManagerClientId'
 )
 
