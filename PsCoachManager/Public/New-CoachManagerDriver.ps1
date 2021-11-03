@@ -101,41 +101,49 @@ function New-CoachManagerDriver {
     )
         
     begin {
+        # parameter definitions
         $Parameters = [System.Management.Automation.CommandMetadata]::new($MyInvocation.MyCommand).Parameters
-        $Parameters.Remove('ServerInstance')
-        $Parameters.Remove('Database')
-        $Parameters.Remove('Credential')
+
+        # remove parameters that shouldn't be include in the INSERT statement
+        $ExcludedParameters =
+            'ServerInstance','Database','Credential' +
+            [System.Management.Automation.PSCmdlet]::CommonParameters + 
+            [System.Management.Automation.PSCmdlet]::OptionalCommonParameters
     }
     
     process {
 
-        $Parameters.Keys | ForEach-Object -Begin {
-
-            $Values=@()
-
+        $PSBoundParameters.Keys | Where-Object {$ExcludedParameters -notcontains $_ } | ForEach-Object -Begin {
+            $Keys = @()
+            $Values = @()
         } -Process {
 
             $Key = $_
+            Write-Debug ("{0}: {1}" -f $Key, $PSBoundParameters[$Key])
 
             switch ( $Parameters[$Key].ParameterType ) {
-                'bool' { 
-                    $Value = $PSBoundParameters[$Key] ? [int]$PSBoundParameters[$Key] : 'NULL'
+                {$_ -eq [bool]} { 
+                    $Keys += $Key
+                    $Values += $PSBoundParameters[$Key] ? [int]$PSBoundParameters[$Key] : 'NULL'
                 }
-                'datetime' { 
-                    $Value = $PSBoundParameters[$Key] ? "'$( $PSBoundParameters[$Key].ToString('MM/dd/yyyy') )'" : 'NULL'
+                {$_ -in [datetime],[System.Nullable[datetime]]} { 
+                    $Keys += $Key
+                    $Values += $PSBoundParameters[$Key] ? "'$( $PSBoundParameters[$Key].ToString('MM/dd/yyyy') )'" : 'NULL'
                 }
-                'string' { 
-                    $Value = $PSBoundParameters[$Key] ? "'$( $PSBoundParameters[$Key] )'" : 'NULL'
+                {$_ -eq [string]} { 
+                    $Keys += $Key
+                    $Values += $PSBoundParameters[$Key] ? "'$( $PSBoundParameters[$Key] )'" : 'NULL'
                 }
                 Default {
-                    $Value = $PSBoundParameters[$Key] ? $PSBoundParameters[$Key] : 'NULL'
+                    $Keys += $Key
+                    $Values += $PSBoundParameters[$Key] ? $PSBoundParameters[$Key] : 'NULL'
                 }
             }
-            $Values += $Value
+
         }
 
         $Query = 
-            "INSERT INTO $Database..Drivers ( $( $Parameters.Keys -join ',' ) )
+            "INSERT INTO Drivers ( $( $Keys -join ',' ) )
             VALUES ( $( $Values -join ',' ) )"
         Write-Debug $Query
 
@@ -143,6 +151,8 @@ function New-CoachManagerDriver {
         {          
             Invoke-Sqlcmd -Query $Query -ServerInstance $ServerInstance -Database $Database -Credential $Credential
         }
+
+        $PSBoundParameters.Clear()
 
     }
     
