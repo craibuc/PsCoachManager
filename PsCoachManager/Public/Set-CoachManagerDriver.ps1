@@ -209,21 +209,17 @@ function Set-CoachManagerDriver {
     )
     
     begin {
+        # parameter definitions
         $Parameters = [System.Management.Automation.CommandMetadata]::new($MyInvocation.MyCommand).Parameters
-    }
-    
-    process {
-
-        # $Clone =  ([PSCustomObject]$PSBoundParameters)
 
         # remove parameters that shouldn't be include in the SET statement
         $ExcludedParameters =
             'ServerInstance','Database','Credential','DriverSerialNo' +
             [System.Management.Automation.PSCmdlet]::CommonParameters + 
             [System.Management.Automation.PSCmdlet]::OptionalCommonParameters
-
-        # debug
-        # $a = $PSBoundParameters
+    }
+    
+    process {
 
         $Set = $PSBoundParameters.Keys | Where-Object {$ExcludedParameters -notcontains $_ } | ForEach-Object {
             
