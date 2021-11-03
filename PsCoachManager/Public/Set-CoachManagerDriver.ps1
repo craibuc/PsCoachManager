@@ -148,13 +148,16 @@ function Set-CoachManagerDriver {
         [string]$Address2,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$City,
+        [Alias('City')]
+        [string]$Address3,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$RegionCode,
+        [Alias('RegionCode')]
+        [string]$Address4,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$PostalCode,
+        [Alias('PostalCode')]
+        [string]$PostCode,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [string]$TelNo1,

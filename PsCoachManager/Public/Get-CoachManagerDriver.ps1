@@ -87,9 +87,9 @@ function Get-CoachManagerDriver {
                 # address
                 Address1 = $_.Address1 | nz
                 Address2 = $_.Address2 | nz
-                City = $_.Address3 | nz
-                RegionCode = $_.Address4 | nz
-                PostalCode = $_.PostCode | nz
+                Address3 = $_.Address3 | nz # city
+                Address4 = $_.Address4 | nz # region
+                PostCode = $_.PostCode | nz
                 CountryCode = $_.International -eq 0 ? 'US' : $null
                 International = [bool]$_.International
                 # contact

@@ -34,9 +34,9 @@ Describe "Set-CoachManagerDriver" {
                 @{ParameterName='Gender'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='Address1'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='Address2'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='City'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='RegionCode'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='PostalCode'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='Address3'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='Address4'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='PostCode'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='TelNo1'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='TelNo1Comment'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='TelNo2'; Type='[string]'; Mandatory=$false}
@@ -159,9 +159,9 @@ Describe "Set-CoachManagerDriver" {
                     Gender='Male'
                     Address1='Address1'
                     Address2='Address2'
-                    City='City'
-                    RegionCode='RegionCode'
-                    PostalCode='PostalCode'
+                    Address3='Address3'
+                    Address4='Address4'
+                    PostCode='PostCode'
                     TelNo1='TelNo1'
                     TelNo1Comment='TelNo1Comment'
                     TelNo2='TelNo2'
@@ -187,9 +187,9 @@ Describe "Set-CoachManagerDriver" {
                     Gender='Male'
                     Address1='Address1'
                     Address2='Address2'
-                    City='City'
-                    RegionCode='RegionCode'
-                    PostalCode='PostalCode'
+                    Address3='Address3'
+                    Address4='Address4'
+                    PostCode='PostCode'
                     TelNo1='TelNo1'
                     TelNo1Comment='TelNo1Comment'
                     TelNo2='TelNo2'

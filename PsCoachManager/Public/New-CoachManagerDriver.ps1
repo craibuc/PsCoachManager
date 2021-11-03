@@ -40,13 +40,16 @@ function New-CoachManagerDriver {
         [string]$Address2,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$City,
+        [Alias('City')]
+        [string]$Address3,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$RegionCode,
+        [Alias('RegionCode')]
+        [string]$Address4,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [string]$PostalCode,
+        [Alias('PostalCode')]
+        [string]$PostCode,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [string]$TelNo1,
@@ -100,7 +103,10 @@ function New-CoachManagerDriver {
         [int]$PayrollID,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [bool]$Schedule
+        [bool]$Schedule,
+
+        [Parameter(ValueFromPipelineByPropertyName)]
+        [datetime]$DateCreated = (Get-Date)
     )
         
     begin {

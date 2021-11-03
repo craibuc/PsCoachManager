@@ -34,9 +34,9 @@ Describe "New-CoachManagerDriver" {
                 @{ParameterName='Gender'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='Address1'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='Address2'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='City'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='RegionCode'; Type='[string]'; Mandatory=$false}
-                @{ParameterName='PostalCode'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='Address3'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='Address4'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='PostCode'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='TelNo1'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='TelNo1Comment'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='TelNo2'; Type='[string]'; Mandatory=$false}
@@ -52,6 +52,7 @@ Describe "New-CoachManagerDriver" {
                 @{ParameterName='EmploymentFinished'; Type=[System.Nullable[datetime]]; Mandatory=$false}
                 @{ParameterName='PayrollID'; Type='[int]'; Mandatory=$false}
                 @{ParameterName='Schedule'; Type='[bool]'; Mandatory=$false}
+                @{ParameterName='DateCreated'; Type='[datetime]'; Mandatory=$false}
             )    
         }
 
