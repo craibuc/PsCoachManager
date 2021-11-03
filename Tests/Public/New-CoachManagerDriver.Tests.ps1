@@ -86,8 +86,18 @@ Describe "New-CoachManagerDriver" {
                 DriverType='DriverType'
                 FirstName='FirstName'
                 Surname='Surname'
-                EmploymentStarted='2021-10-20'
+                EmploymentStarted='2021-10-01'
             } 
+        }
+
+        BeforeDiscovery {
+            $Mandatory = @{
+                DriverID='DriverID'
+                DriverType='DriverType'
+                FirstName='FirstName'
+                Surname='Surname'
+                EmploymentStarted='2021-10-01'
+            }
         }
 
         Context "Mandatory parameters" {
@@ -117,7 +127,26 @@ Describe "New-CoachManagerDriver" {
                     $Query -like "INSERT INTO *Drivers*"
                 }
             }
+            It "sets the column '<Name>' with the value '<Value>'" -TestCases ( $Mandatory.GetEnumerator() | ForEach-Object { @{Name=$_.Key; Value=$_.Value} } ) {
+                param($Name, $Value)
 
+                Should -Invoke Invoke-Sqlcmd -ParameterFilter {
+
+                    Write-Debug "$Name`: $value"
+
+                    $Query -match 'insert into.*\((?<KEY>.*)\)[\s]*values.*\((?<VALUE>.*)\)'
+
+                    # Write-Debug $Matches['KEY'].Trim()
+                    # Write-Debug $Matches['VALUE'].Trim()
+
+                    $K = $Matches['KEY'].Trim() -split ','
+                    $V = $Matches['VALUE'].Trim() -split ','
+
+                    $Actual = $V[$K.IndexOf($Name)]
+                    $Value -eq "'$Actual'"
+
+                }
+            }
         }
         
     }
