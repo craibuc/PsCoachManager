@@ -31,7 +31,7 @@ function Set-CoachManagerClient {
     process {
 
         $Query = 
-        "UPDATE  $Database..Clients
+        "UPDATE Clients
         SET     ClientID = $ClientId
         WHERE   ClientSerialNo = $ClientSerialNo"
         Write-Debug "Query: $Query"
