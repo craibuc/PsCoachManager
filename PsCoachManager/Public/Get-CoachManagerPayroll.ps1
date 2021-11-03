@@ -16,13 +16,13 @@ function Get-CoachManagerPayroll {
 
     [CmdletBinding()]
     param (
-        [Parameter()]
+        [Parameter(Mandatory)]
         [string]$ServerInstance,
 
         [Parameter()]
         [string]$Database = 'PHCS',
 
-        [Parameter()]
+        [Parameter(Mandatory)]
         [pscredential]$Credential,
 
         [Parameter()]
