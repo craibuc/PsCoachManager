@@ -234,7 +234,7 @@ function Set-CoachManagerDriver {
 
             switch ( $Parameters[$Key].ParameterType ) {
                 {$_ -eq [bool]} { 
-                    "{0}={1}" -f $Key, ($PSBoundParameters[$Key] ? [int]$PSBoundParameters[$Key] : 'NULL')
+                    "{0}={1}" -f $Key, [int]$PSBoundParameters[$Key]
                 }
                 {$_ -eq [System.Nullable[datetime]] } {
                     "{0}={1}" -f $Key, ($PSBoundParameters[$Key] ? "'" + $PSBoundParameters[$Key].ToString('MM/dd/yyyy') + "'" : 'NULL')
