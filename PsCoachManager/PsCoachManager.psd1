@@ -12,7 +12,7 @@
 RootModule = 'PsCoachManager.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.4.3'
+ModuleVersion = '0.5.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
