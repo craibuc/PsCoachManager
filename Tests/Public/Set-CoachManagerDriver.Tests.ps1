@@ -23,11 +23,11 @@ Describe "Set-CoachManagerDriver" {
                 @{ParameterName='Database'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='Credential'; Type='[pscredential]'; Mandatory=$true}
     
-                @{ParameterName='DriverID'; Type='[string]'; Mandatory=$true}
-                @{ParameterName='DriverType'; Type='[string]'; Mandatory=$true}
-                @{ParameterName='FirstName'; Type='[string]'; Mandatory=$true}
-                @{ParameterName='Surname'; Type='[string]'; Mandatory=$true}
-                @{ParameterName='EmploymentStarted'; Type=[System.Nullable[datetime]]; Mandatory=$true}
+                @{ParameterName='DriverID'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='DriverType'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='FirstName'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='Surname'; Type='[string]'; Mandatory=$false}
+                @{ParameterName='EmploymentStarted'; Type=[System.Nullable[datetime]]; Mandatory=$false}
     
                 @{ParameterName='Title'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='DateOfBirth'; Type=[System.Nullable[datetime]]; Mandatory=$false}
@@ -50,7 +50,7 @@ Describe "Set-CoachManagerDriver" {
                 @{ParameterName='LicenceValidTo'; Type=[System.Nullable[datetime]]; Mandatory=$false}
                 @{ParameterName='CompanyID'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='EmploymentFinished'; Type=[System.Nullable[datetime]]; Mandatory=$false}
-                @{ParameterName='PayrollID'; Type='[int]'; Mandatory=$false}
+                @{ParameterName='PayrollID'; Type='[string]'; Mandatory=$false}
                 @{ParameterName='Schedule'; Type='[bool]'; Mandatory=$false}
             )
         }
@@ -94,11 +94,11 @@ Describe "Set-CoachManagerDriver" {
         BeforeDiscovery {
             $Mandatory = @{
                 DriverSerialNo=1
-                DriverID='DriverID'
-                DriverType='DriverType'
-                FirstName='FirstName'
-                Surname='Surname'
-                EmploymentStarted='2021-10-01'
+                # DriverID='DriverID'
+                # DriverType='DriverType'
+                # FirstName='FirstName'
+                # Surname='Surname'
+                # EmploymentStarted='2021-10-01'
             }
         }
 
@@ -175,7 +175,7 @@ Describe "Set-CoachManagerDriver" {
                     LicenceValidTo='10/04/21'
                     CompanyID='CompanyID'
                     EmploymentFinished='10/05/21'
-                    PayrollID=1
+                    PayrollID='0123456'
                     Schedule=[int]$true
                 }
             }
@@ -203,7 +203,7 @@ Describe "Set-CoachManagerDriver" {
                     LicenceValidTo='10/04/21'
                     CompanyID='CompanyID'
                     EmploymentFinished='10/05/21'
-                    PayrollID=1
+                    PayrollID='0123456'
                     Schedule=[int]$true
                 }
             }
@@ -218,7 +218,7 @@ Describe "Set-CoachManagerDriver" {
                 
                 Assert-MockCalled Invoke-Sqlcmd -ParameterFilter {
                     $Test = 
-                        if ( $Name -in 'PayrollID','Schedule') {
+                        if ( $Name -in 'Schedule') {
                             "*{0}={1}*" -f $Name, $Value
                         }
                         elseif ( $Name -in 'LicenceValidFrom','LicenceValidTo','EmploymentFinished') {
