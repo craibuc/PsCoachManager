@@ -18,12 +18,9 @@ function Repair-CoachManagerClientId {
     )
 
     $Query = 
-        "WHILE EXISTS (SELECT 1 FROM $Database..Clients WHERE RIGHT(ClientID, 1) = ' ')
-        BEGIN
-            UPDATE TOP (1) $Database..Clients
-            SET    ClientID = RTRIM(ClientID)
-            WHERE  RIGHT(ClientID, 1) = ' ';
-        END"
+        "UPDATE  $Database..Clients
+        SET     ClientID = LTRIM(RTRIM( ClientID ))
+        WHERE   RIGHT(ClientID,1)=' '"
     Write-Debug "Query: $Query"
 
     if ( $PSCmdlet.ShouldProcess('Clients.ClientID', "Invoke-Sqlcmd") )
