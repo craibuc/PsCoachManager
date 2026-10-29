@@ -119,19 +119,23 @@ function Set-CoachManagerDriver {
         [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
         [int]$DriverSerialNo,
 
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
+        [Parameter(ValueFromPipelineByPropertyName)]
+        # [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
         [string]$DriverID,
 
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
+        [Parameter(ValueFromPipelineByPropertyName)]
+        # [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
         [string]$DriverType,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [string]$Title,
 
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
+        [Parameter(ValueFromPipelineByPropertyName)]
+        # [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
         [string]$FirstName,
 
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
+        [Parameter(ValueFromPipelineByPropertyName)]
+        # [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
         [string]$Surname,
 
         [Parameter(ValueFromPipelineByPropertyName)]
@@ -201,14 +205,15 @@ function Set-CoachManagerDriver {
         [Parameter(ValueFromPipelineByPropertyName)]
         [string]$CompanyID,
 
-        [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
+        [Parameter(ValueFromPipelineByPropertyName)]
+        # [Parameter(ValueFromPipelineByPropertyName, Mandatory)]
         [System.Nullable[datetime]]$EmploymentStarted,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [System.Nullable[datetime]]$EmploymentFinished,
 
         [Parameter(ValueFromPipelineByPropertyName)]
-        [int]$PayrollID,
+        [string]$PayrollID,
 
         [Parameter(ValueFromPipelineByPropertyName)]
         [bool]$Schedule
@@ -227,10 +232,10 @@ function Set-CoachManagerDriver {
     
     process {
 
-        $Set = $PSBoundParameters.Keys | Where-Object {$ExcludedParameters -notcontains $_ } | ForEach-Object {
+        $SetKeyValue = $PSBoundParameters.Keys | Where-Object {$ExcludedParameters -notcontains $_ } | ForEach-Object {
             
             $Key = $_
-            Write-Debug ("{0}: {1}" -f $Key, $PSBoundParameters[$Key])
+            Write-Debug ("KeyValue: {0} = {1}" -f $Key, $PSBoundParameters[$Key])
 
             switch ( $Parameters[$Key].ParameterType ) {
                 {$_ -eq [bool]} { 
@@ -249,18 +254,26 @@ function Set-CoachManagerDriver {
 
         }
 
-        $Predicate = [pscustomobject]@{
-            UPDATE = "UPDATE  $Database..Drivers"
-            SET = "SET  {0}" -f ($Set -join ',')
-            WHERE = "WHERE  DriverSerialNo=$DriverSerialNo"
+        # perform UPDATE only if there are fields that have been set
+        if ( $null -ne $SetKeyValue ) {
+
+            $Predicate = [pscustomobject]@{
+                UPDATE = "UPDATE  $Database..Drivers"
+                SET = "SET  {0}" -f ($SetKeyValue -join ',')
+                WHERE = "WHERE  DriverSerialNo=$DriverSerialNo"
+            }
+    
+            $Query = $Predicate.PsObject.Properties.Value -join "`r`n"
+            Write-Debug $Query
+    
+            if ($pscmdlet.ShouldProcess("DriverSerialNo: $DriverSerialNo","Update $Database..Drivers"))
+            {
+                Invoke-Sqlcmd -Query $Query -ServerInstance $ServerInstance -Database $Database -Credential $Credential
+            }
+    
         }
-
-        $Query = $Predicate.PsObject.Properties.Value -join "`r`n"
-        Write-Debug $Query
-
-        if ($pscmdlet.ShouldProcess("DriverSerialNo: $DriverSerialNo","Update $Database..Drivers"))
-        {
-            Invoke-Sqlcmd -Query $Query -ServerInstance $ServerInstance -Database $Database -Credential $Credential
+        else {
+            Write-Host "WARNING: Set-CoachManagerDriver - Method contained no modified properties - SKIPPING" -ForegroundColor Yellow
         }
 
         $PSBoundParameters.Clear()
